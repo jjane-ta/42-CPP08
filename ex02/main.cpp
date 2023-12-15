@@ -27,6 +27,32 @@ int main()
 		}
 		std::stack<int> s(mstack);
 	}
+	std::cout  << std::endl;
+
+	{
+		MutantStack<char> mstack;
+
+		mstack.push('a');
+		mstack.push('b');
+		std::cout << mstack.top() << std::endl;
+		mstack.pop();
+		std::cout << mstack.size() << std::endl;
+		mstack.push('c');
+		mstack.push('d');
+		mstack.push('e');
+		//[...]
+		mstack.push('f');
+		MutantStack<char>::iterator it = mstack.begin();
+		MutantStack<char>::iterator ite = mstack.end();
+		++it;
+		--it;
+		while (it != ite)
+		{
+			std::cout << *it << std::endl;
+			++it;	
+		}
+		std::stack<char> s(mstack);
+	}	
 
 	std::cout  << std::endl;
 	{
